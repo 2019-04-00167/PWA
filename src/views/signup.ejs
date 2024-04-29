@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %></title>
+  </head>
+  <body>
+    <form action="/signup" method="post">
+      <section>
+        <label for="first_name"> First Name</label>
+        <input
+          type="text"
+          name="first_name"
+          id="first_name"
+          placeholder="Enter First Name"
+          required
+        />
+      </section>
+      <!-- <br /> -->
+      <section>
+        <label for="last_name"> Last Name</label>
+        <input
+          type="text"
+          name="last_name"
+          id="last_name"
+          placeholder="Enter Last Name"
+          required
+        />
+      </section>
+      <!-- <br /> -->
+      <section>
+        <label for="email"> Email</label>
+        <input
+          type="text"
+          name="email"
+          id="email"
+          placeholder="Enter email"
+          required
+        />
+      </section>
+      <!-- <br /> -->
+      <section>
+        <label for="password"> Password </label>
+        <input
+          type="password"
+          name="password"
+          id="password"
+          placeholder="Enter password"
+          required
+        />
+      </section>
+      <!-- <br /> -->
+      <input type="submit" value="SignUp" />
+    </form>
+  </body>
+</html>

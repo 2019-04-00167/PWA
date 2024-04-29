@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title><%= title %></title>
+  </head>
+  <body>
+    <h1>Home page</h1>
+    <%- include('navbar') %>
+    <table>
+      <thead>
+        <th>Product name</th>
+        <th>Expiry date</th>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Peanut Butter</td>
+          <td>14-5-2024</td>
+        </tr>
+        <tr>
+          <td>Water</td>
+          <td>4-5-2024</td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>
