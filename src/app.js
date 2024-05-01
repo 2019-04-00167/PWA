@@ -25,7 +25,7 @@ app.use(express.static(path.join(__dirname, "public"))); // Static files like im
 
 // Setting template folder and template engine
 
-app.use("/", isLoggedIn, homeRouter);
+app.use("/", homeRouter);
 app.use("/login", loginRouter);
 app.use("/products", productRouter);
 app.use("/signup", signUpRouter);
