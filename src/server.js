@@ -13,6 +13,8 @@ const Store = require("./models/store.model");
 const Preference = require("./models/preference.model");
 const Reminder = require("./models/reminder.model");
 const User = require("./models/user.model");
+const Batch = require("./models/batch.model");
+const { Model } = require("sequelize");
 
 // Creating server
 Server = http.createServer(app);
@@ -26,6 +28,12 @@ Server.listen(PORT, async (err) => {
     console.log("[Server] stopped running...");
   }
   console.log(`[Server] is listening on port ${PORT}...`);
-  await sequelize.sync();
+  // Store.hasMany(Batch, { foreignKey: "store_id" });
+  Store.hasMany(Batch, { foreignKey: "store_id" });
+  Store.Batches = Batch.belongsTo(Store);
+  Product.hasMany(Batch, { foreignKey: "product_id" });
+  Product.Batches = Batch.belongsTo(Product);
+  // Syncing all Models
+  await sequelize.sync({ force: true });
   console.log("Model is synced with the database");
 });

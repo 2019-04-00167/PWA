@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %></title>
+  </head>
+  <body>
+    <%- include('navbar') %>
+    <form action="/batches" method="post">
+      <section>
+        <label for="batch_number">Batch Number</label>
+        <input type="number" name="batch_number" id="batch_number" />
+      </section>
+      <section>
+        <label for="quantity">Quantity</label>
+        <input type="text" name="quantity" id="quantity" />
+      </section>
+      <section>
+        <label for="expiry_date">Expire Date: </label>
+        <input type="date" name="expiry_date" id="expiry_date" />
+      </section>
+      <input type="submit" value="Create Batch" />
+    </form>
+  </body>
+</html>

@@ -5,46 +5,64 @@ const Store = require("../models/store.model");
 const { sequelize } = require("../config/database");
 
 const getProducts = async (req, res) => {
-  await sequelize.sync();
-  allProducts = await Product.findAll();
-  return res.render("product", {
-    products: allProducts.forEach(async (product) => {
-      return await product.toJSON();
-    }),
+  const products = await Product.findAll({
+    attributes: ["name"],
+  });
+  if (!products || products.length == 0) {
+    // return res.status(404).send("No product found");
+    return res.render("products", {
+      title: "Products",
+      message: "No product found",
+    });
+  }
+  // formatedProducts = products.forEach(async (product) => {
+  //   const result = await product.toJSON();
+  //   console.log(result);
+  //   return result;
+  // });
+  // console.log(formatedProducts);
+  return res.render("products", {
     title: "Products",
+    products: products,
   });
 };
 
-const postProduct = async (req, res) => {
+const createProduct = async (req, res) => {
   const product = {
     id: uuid(),
-    name: req.body["productName"],
-    quantity: req.body["quantity"],
-    store_id: req.body["store_id"],
-    expiry_date: req.body["expiry_date"],
+    name: req.body["product_name"],
   };
-  console.log(req.body["store_id"]);
-  //   console.log(req.body["productName"]);
-  //   console.log(req.body["quantity"]);
-  //   console.log(req.body["expiry_date"]);
-  console.log(product);
-  const createdProduct = await Product.create(product);
-  return "singleProduct";
+  const result = await Product.create(product);
+  // return res.status(201).send(result);
+  return res.status(201).redirect("/products");
 };
 
-const getCreateProduct = async (req, res) => {
+const getCreateProductPage = async (req, res) => {
   const stores = await Store.findAll();
   console.log(stores);
   return res.render("create_product", { title: "Create" });
 };
 
-const deleteProduct = async (req, res) => {
-  await deleteProductIdNull();
-  // await Product.destroy()
+const updateProduct = async (req, res) => {
+  // TODO: Update a product
+  // This feature will be implemented in the future
+  return res.send("Not yet implemented");
 };
 
-async function deleteProductIdNull(id = null) {
-  await Product.destroy({ where: { id: id } });
-}
+const deleteProduct = async (req, res) => {
+  const productName = req.params["product_name"];
+  await Product.destroy({ where: { name: productName } });
+  return res.status(200).send("Product deleted successfully");
+};
 
-module.exports = { getProducts, postProduct, getCreateProduct };
+// async function deleteProductIdNull(id = null) {
+//   await Product.destroy({ where: { id: id } });
+// }
+
+module.exports = {
+  getProducts,
+  createProduct: createProduct,
+  getCreateProductPage,
+  updateProduct,
+  deleteProduct,
+};

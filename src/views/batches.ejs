@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <title><%= title %></title>
+  </head>
+  <body>
+    <%- include('navbar') %>
+    <a href="/batches/create/v2">Create New Batch</a>
+    <% if(locals.message){ %>
+    <h2><%= message %></h2>
+    <% } %>
+    <table>
+      <thead>
+        <th>Product</th>
+        <th>Batch Number</th>
+        <th>Quantity</th>
+        <th>Expire Date</th>
+        <th>Store</th>
+        <th>Store Location</th>
+      </thead>
+      <tbody>
+        <!-- <tr>
+          <td>Jam</td>
+          <td>20</td>
+          <td>200</td>
+          <td>22-5-2024</td>
+          <td>Store3</td>
+          <td>Tegeta</td>
+        </tr> -->
+        <% if(locals.batches){ %> <% batches.forEach(batch => { %>
+        <tr>
+          <td><%= batch.name %></td>
+          <td><%= batch.batch_no %></td>
+          <td><%= batch.quantity %></td>
+          <td><%= batch.expiry_date %></td>
+          <td><%= batch.store_name %></td>
+          <td><%= batch.location %></td>
+        </tr>
+        <% })} %>
+      </tbody>
+    </table>
+  </body>
+</html>

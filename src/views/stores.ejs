@@ -3,9 +3,34 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
     <title><% title %></title>
   </head>
   <body>
-    <h1>Store</h1>
+    <%- include('navbar') %>
+    <a href="/stores/create">Create New Store</a>
+    <% if(locals.message){ %>
+    <h2><%= message %></h2>
+    <% } %>
+    <table>
+      <thead>
+        <th>Store Name</th>
+        <th>Location</th>
+      </thead>
+      <tbody>
+        <% if(locals.stores){stores.forEach(store => { %>
+        <tr>
+          <!-- <h2><%= // store.name %></h2> -->
+          <!-- <p><%= // store.location %></p> -->
+          <td><%= store.name %></td>
+          <td><%= store.location %></td>
+          <% // const deletebtn = document.getElementByI("delete"); %> <% // %>
+          <% // function delete(){ %> <% // } %>
+          <td><button onclick="edit()" id="edit">Edit</button></td>
+          <td><button onclick="deleteStore()" id="delete">delete</button></td>
+        </tr>
+        <% })} %>
+      </tbody>
+    </table>
   </body>
 </html>

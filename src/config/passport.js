@@ -1,3 +1,7 @@
+/* This is the file for passport strategy configuration
+ * It is used for authentication
+ */
+
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 const bcrypt = require("bcrypt");

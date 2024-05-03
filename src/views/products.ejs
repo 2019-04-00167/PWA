@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <title><%= title %></title>
+  </head>
+  <body>
+    <%- include('navbar') %>
+    <a href="/products/create">Create New Product</a>
+    <% if(locals.message){ %>
+    <h2><%= message %></h2>
+    <% } %>
+    <table>
+      <thead>
+        <th>Product Name</th>
+      </thead>
+      <tbody>
+        <% if(locals.products){ %> <% products.forEach(product => { %>
+        <tr>
+          <td><%= product.name %></td>
+        </tr>
+        <% }) %> <% } %>
+        <!-- <tr>
+          <td>Peanut Butter</td>
+          <td>20</td>
+          <td>Tegeta</td>
+          <td><%= // new Date("July, 3 2024") %></td>
+        </tr> -->
+        <!-- <tr>
+          <td>Blue band</td>
+          <td>10</td>
+          <td>Tegeta</td>
+          <td><%= //new Date("October, 12 2024") %></td>
+        </tr> -->
+      </tbody>
+    </table>
+  </body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <title><%= title %></title>
+  </head>
+  <body>
+    <%- include('navbar') %>
+    <form action="/batches" method="post">
+      <section>
+        <label for="product">Product</label>
+        <select name="product_id" id="product_id">
+          <% if(locals.products){ %> <% products.forEach(product => {%>
+          <option value="<%= product.id %>"><%= product.name %></option>
+          <% })} %>
+          <option value="<%= null %>" selected disabled>Select Product</option>
+        </select>
+      </section>
+      <section>
+        <label for="batch_number">Batch Number: </label>
+        <input
+          type="text"
+          name="batch_number"
+          id="batch_number"
+          placeholder="Enter Batch number"
+          required
+        />
+      </section>
+      <section>
+        <label for="store">Store: </label>
+        <select name="store_id" id="store">
+          <% if(locals.stores){ %> <% stores.forEach(store => {%>
+          <option value="<%= store.id %>"><%= store.name %></option>
+          <% })} %> <% if(!(locals.store)){ %>
+          <option value="<% null %>" selected disabled>Select Store</option>
+          <% } %>
+        </select>
+      </section>
+      <section>
+        <label for="quantity">Quantity: </label>
+        <input
+          type="text"
+          name="quantity"
+          id="quantity"
+          placeholder="Enter Quantity"
+          required
+        />
+      </section>
+      <section>
+        <label for="expiry_date">Expiry date: </label>
+        <input
+          type="date"
+          name="expiry_date"
+          id="expiry_date"
+          placeholder="Enter Expiry Date"
+          required
+        />
+      </section>
+      <input type="submit" value="Create Batch" />
+    </form>
+  </body>
+</html>

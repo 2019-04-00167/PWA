@@ -1,3 +1,13 @@
-thead{
-    background: blue;
+*, :root{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+ul{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+nav{
+    margin: 1rem;
 }

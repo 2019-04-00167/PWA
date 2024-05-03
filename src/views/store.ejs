@@ -3,9 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
     <title><%= title %></title>
   </head>
   <body>
     <%- include('navbar') %>
+    <main>
+      <h1><%= store.name %></h1>
+      <p><%= location %></p>
+    </main>
   </body>
 </html>

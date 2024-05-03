@@ -1,6 +1,9 @@
 const { sequelize } = require("../config/database.js");
 const Store = require("../models/store.model");
 const { DataTypes } = require("sequelize");
+
+/* The product has a reference to
+ */
 const Product = sequelize.define("Product", {
   id: {
     type: DataTypes.UUIDV4,
@@ -9,18 +12,9 @@ const Product = sequelize.define("Product", {
   name: {
     type: DataTypes.STRING,
     allowNull: false,
+    unique: true,
   },
-  quantity: {
-    type: DataTypes.BIGINT,
-  },
-  store_id: {
-    type: DataTypes.UUIDV4,
-    references: {
-      model: Store,
-      key: Store.id,
-    },
-  },
-  expiry_date: DataTypes.DATEONLY,
+  // other attributes
 });
 
 module.exports = Product;
