@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>User Account</title>
+<link rel="stylesheet" href="useraccountstyle.css" />
+</head>
+
+<body>
+    
+<div class="container">
+    <h2>User Account</h2>
+    <div class="details">
+        <label for="username">Username:</label><p id="username">basad167</p><br>
+        <label for="firstname">First Name:</label><p id="firstname">Basad</p><br>
+        <label for="lastname">Last Name:</label><p id="lastname">Amdoun</p><br>
+        <label for="email">Email:</label><p id="email">basad.amdoun@example.com</p><br>
+        <label for="password">Password:</label><input type="password" id="password" placeholder="********" readonly><br>
+        <label for="confirmPassword">Confirm Password:</label><input type="password" id="confirmPassword" placeholder="********" readonly><br>
+    </div>
+    <button class="edit-button" onclick="editDetails()">Edit Details</button>
+</div>
+
+<script>
+    function editDetails() {
+        var currentPassword = prompt("Enter your current password:");
+        var username = document.getElementById('username');
+        var firstname = document.getElementById('firstname');
+        var lastname = document.getElementById('lastname');
+        var email = document.getElementById('email');
+
+        if (currentPassword !== null && currentPassword === "currentPasswordFromServer") { // Replace "currentPasswordFromServer" with the actual current password from the server
+            var newPassword = prompt("Enter new password:");
+            var confirmNewPassword = prompt("Confirm new password:");
+
+            if (newPassword !== null && confirmNewPassword !== null && newPassword === confirmNewPassword) {
+                document.getElementById('password').value = newPassword;
+                document.getElementById('confirmPassword').value = confirmNewPassword;
+                // Prompt for other details editing...
+            } else if (newPassword !== null && confirmNewPassword !== null && newPassword !== confirmNewPassword) {
+                alert("Passwords do not match!");
+            }
+        } else if (currentPassword !== null) {
+            alert("Incorrect current password!");
+        }
+    }
+</script>
+
+</body>
+</html>
+
+
+
+
+
