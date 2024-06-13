@@ -3,32 +3,35 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <title><%= title %></title>
   </head>
   <body>
-    <% if(locals.messages){ %>
-    <p><%= messages %></p>
-    <% } %>
-    <form action="/login" method="post">
-      <label for="email"> Email </label>
-      <input
-        type="email"
-        name="email"
-        id="email"
-        placeholder="Enter Email"
-        required
-      />
-      <br />
-      <label for="password"> Password </label>
-      <input
-        type="password"
-        name="password"
-        id="password"
-        placeholder="Enter password"
-        required
-      />
-      <br />
-      <input type="submit" value="Login" />
-    </form>
+    <main>
+      <% if(locals.messages){ %>
+      <p class="alert alert-success">messages</p>
+      <% } %> <% if(success_msg){ %>
+      <p class="alert alert-success"><%= success_msg %></p>
+      <% } %> <% if(locals.failed_msg){ %>
+      <p class="alert alert-danger"><%= failed_msg %></p>
+      <% } %>
+      <div class="container small-form">
+        <h2>Login</h2>
+        <form action="/login" method="post">
+          <label for="email">Email:</label>
+          <input type="text" id="email" name="email" required />
+
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password" required />
+
+          <input type="submit" value="Login" />
+
+          <div class="options">
+            <a href="/signup">Sign Up</a>
+            <a href="/forgot_password">Forgot Password</a>
+          </div>
+        </form>
+      </div>
+    </main>
   </body>
 </html>

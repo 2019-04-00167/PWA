@@ -3,55 +3,65 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <title><%= title %></title>
   </head>
   <body>
-    <form action="/signup" method="post">
-      <section>
-        <label for="first_name"> First Name</label>
-        <input
-          type="text"
-          name="first_name"
-          id="first_name"
-          placeholder="Enter First Name"
-          required
-        />
-      </section>
-      <!-- <br /> -->
-      <section>
-        <label for="last_name"> Last Name</label>
-        <input
-          type="text"
-          name="last_name"
-          id="last_name"
-          placeholder="Enter Last Name"
-          required
-        />
-      </section>
-      <!-- <br /> -->
-      <section>
-        <label for="email"> Email</label>
-        <input
-          type="text"
-          name="email"
-          id="email"
-          placeholder="Enter email"
-          required
-        />
-      </section>
-      <!-- <br /> -->
-      <section>
-        <label for="password"> Password </label>
-        <input
-          type="password"
-          name="password"
-          id="password"
-          placeholder="Enter password"
-          required
-        />
-      </section>
-      <!-- <br /> -->
-      <input type="submit" value="SignUp" />
-    </form>
+    <main>
+      <% if(locals.success_msg){ %>
+      <p class="alert alert-success"><%= success_msg %></p>
+      <% } %> <% if(locals.failed_msg){ %>
+      <p class="alert alert-danger"><%= failed_msg %></p>
+      <% } %>
+      <div class="container small-form">
+        <h2>Sign Up</h2>
+        <form action="/signup" method="post">
+          <label for="firstname">First Name:</label>
+          <input
+            type="text"
+            id="firstname"
+            name="first_name"
+            placeholder="e.g. Basad"
+            required
+          />
+          <label for="lastname">Last Name:</label>
+          <input
+            type="text"
+            id="lastname"
+            name="last_name"
+            placeholder="e.g. Amdoun"
+            required
+          />
+          <label for="email">Email:</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="e.g. basad.amdoun@example.com"
+            required
+          />
+          <label for="password">Password:</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            placeholder="********"
+            required
+          />
+          <label for="confirm_password">Confirm Password:</label>
+          <input
+            type="password"
+            id="confirm_password"
+            name="confirm_password"
+            placeholder="********"
+            required
+          />
+          <input type="submit" value="Sign Up" />
+          <div class="options">
+            <a href="/login">Login</a>
+          </div>
+        </form>
+      </div>
+    </main>
   </body>
 </html>

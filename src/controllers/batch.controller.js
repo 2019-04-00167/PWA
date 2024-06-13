@@ -11,7 +11,7 @@ async function getBatches(req, res) {
   // });
   /* Test code */
   const result = await sequelize.query(
-    "SELECT b.*, p.name, s.name as 'store_name', location FROM batches b JOIN Products p ON b.product_id=p.id JOIN stores s ON b.store_id=s.id;",
+    "SELECT b.*, p.name, s.name as 'store_name', location FROM batches b JOIN products p ON b.product_id=p.id JOIN stores s ON b.store_id=s.id;",
     { type: QueryTypes.SELECT }
   );
   console.log("result" + result);

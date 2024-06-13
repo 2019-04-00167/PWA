@@ -10,7 +10,7 @@ const { sequelize } = require("./config/database");
 // Models imports
 const Product = require("./models/product.model");
 const Store = require("./models/store.model");
-const Preference = require("./models/preference.model");
+const Settings = require("./models/settings.model");
 const Reminder = require("./models/reminder.model");
 const User = require("./models/user.model");
 const Batch = require("./models/batch.model");

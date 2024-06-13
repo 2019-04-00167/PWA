@@ -8,8 +8,15 @@ function getLogin(req, res) {
 // }
 
 function logout(req, res) {
-  if (req.user) return res.status(401).redirect("/login");
-  req.logout();
+  console.log("session: ");
+  console.log(req.session);
+  console.log("logout : ");
+  console.log(req.logout);
+  if (req.user) {
+    req.logout();
+    // req.flash("You are now logged out!");
+    return res.status(401).redirect("/login");
+  }
   return res.status(302).redirect("/login");
 }
 

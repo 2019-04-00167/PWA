@@ -7,23 +7,17 @@
     <title><%= title %></title>
   </head>
   <body>
-    <h1>Home page</h1>
-    <%- include('navbar') %>
-    <table>
-      <thead>
-        <th>Product name</th>
-        <th>Expiry date</th>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Peanut Butter</td>
-          <td>14-5-2024</td>
-        </tr>
-        <tr>
-          <td>Water</td>
-          <td>4-5-2024</td>
-        </tr>
-      </tbody>
-    </table>
+    <header>
+      <h1>Expire Date Reminder System</h1>
+    </header>
+    <div class="container">
+      <%- include('navbar') %>
+      <div>
+        <a href="/batches/create_batch" class="section-link">
+          Register New Item
+        </a>
+        <a href="/reminders" class="section-link"> Check Expiration Dates </a>
+      </div>
+    </div>
   </body>
 </html>

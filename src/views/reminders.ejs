@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %></title>
+  </head>
+  <body>
+    <main>
+      <h1>Reminders</h1>
+      <% if(locals.reminders){ %> <% reminders.forEach(reminder => { %>
+      <section>
+        <h2><%= reminder.quantity %></h2>
+        <p><%= reminder.batch_no %></p>
+        <p><%= reminder.expiry_date %></p>
+      </section>
+      <% })} %>
+    </main>
+  </body>
+</html>

@@ -17,13 +17,14 @@ passport.use(
         });
         if (!user) {
           console.log("incorect email");
+          // req.flash("success_msg", "Wrong email or password");
           return done(null, false, { message: "Incorrect Email" });
         }
         if (!(await bcrypt.compare(password, user.password))) {
           console.log("incorect password");
+          // req.flash("success_msg", "Wrong email or password");
           return done(null, false, { message: "Incorrect Password" });
         }
-        console.log("User 1" + user.toJSON());
         return done(null, user);
       } catch (error) {
         return done(error);
