@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expiration Dates</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            background-color: #f8f8f8;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        .urgent {
+            background-color: #ffcccc;
+        }
+        .warning {
+            background-color: #fff3cd;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Approaching Expiration Dates</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Product Name</th>
+                    <th>Batch Number</th>
+                    <th>Expiration Date</th>
+                    <th>Days Remaining</th>
+                    <th>Quantity</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="urgent">
+                    <td>Milk</td>
+                    <td>B1234</td>
+                    <td>2023-06-30</td>
+                    <td>2</td>
+                    <td>50</td>
+                    <td><button>Edit</button> <button>Remove</button></td>
+                </tr>
+                <tr class="warning">
+                    <td>Bread</td>
+                    <td>B5678</td>
+                    <td>2023-07-15</td>
+                    <td>17</td>
+                    <td>30</td>
+                    <td><button>Edit</button> <button>Remove</button></td>
+                </tr>
+                <!-- More rows -->
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

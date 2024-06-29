@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check Expiration Dates</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .search-bar, .filters {
+            margin-bottom: 20px;
+        }
+        input, select {
+            padding: 10px;
+            width: calc(100% - 22px);
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Check Expiration Dates</h2>
+
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Search by keyword...">
+        </div>
+
+        <div class="filters">
+            <label for="viewOption">View:</label>
+            <select id="viewOption">
+                <option value="general">General</option>
+                <option value="category">By Category</option>
+            </select>
+            <select id="categoryFilter" style="display: none;">
+                <option value="">All Categories</option>
+                <option value="food">Food</option>
+                <option value="beverages">Beverages</option>
+                <option value="personal_care">Personal Care</option>
+                <!-- Add more categories as needed -->
+            </select>
+            <label for="startDate">From:</label>
+            <input type="month" id="startDate">
+            <label for="endDate">To:</label>
+            <input type="month" id="endDate">
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Product Name</th>
+                    <th>Category</th>
+                    <th>Expiration Date</th>
+                </tr>
+            </thead>
+            <tbody id="productTable">
+                <!-- Example data rows -->
+                <tr>
+                    <td>Milk</td>
+                    <td>Food</td>
+                    <td>2023-10</td>
+                </tr>
+                <tr>
+                    <td>Shampoo</td>
+                    <td>Personal Care</td>
+                    <td>2024-01</td>
+                </tr>
+                <!-- Add more rows dynamically -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        const searchInput = document.getElementById('searchInput');
+        const viewOption = document.getElementById('viewOption');
+        const categoryFilter = document.getElementById('categoryFilter');
+        const startDate = document.getElementById('startDate');
+        const endDate = document.getElementById('endDate');
+        const productTable = document.getElementById('productTable');
+
+        const filterProducts = () => {
+            const searchValue = searchInput.value.toLowerCase();
+            const viewValue = viewOption.value;
+            const categoryValue = categoryFilter.value;
+            const startValue = startDate.value;
+            const endValue = endDate.value;
+
+            const rows = productTable.getElementsByTagName('tr');
+            for (let row of rows) {
+                const cells = row.getElementsByTagName('td');
+                const productName = cells[0].innerText.toLowerCase();
+                const category = cells[1].innerText.toLowerCase();
+                const expirationDate = cells[2].innerText;
+
+                const matchesSearch = productName.includes(searchValue);
+                const matchesCategory = (viewValue === 'general') || (categoryValue === "" || category === categoryValue);
+                const matchesDateRange = (!startValue || expirationDate >= startValue) &&
+                                         (!endValue || expirationDate <= endValue);
+
+                if (matchesSearch && matchesCategory && matchesDateRange) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            }
+        };
+
+        viewOption.addEventListener('change', () => {
+            categoryFilter.style.display = viewOption.value === 'category' ? 'block' : 'none';
+            filterProducts();
+        });
+
+        searchInput.addEventListener('input', filterProducts);
+        categoryFilter.addEventListener('change', filterProducts);
+        startDate.addEventListener('change', filterProducts);
+        endDate.addEventListener('change', filterProducts);
+    </script>
+</body>
+</html>
